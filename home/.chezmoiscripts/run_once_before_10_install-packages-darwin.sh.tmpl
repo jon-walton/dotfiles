@@ -1,0 +1,18 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+brew "git"
+brew "hey"
+brew "jq"
+brew "yq"
+brew "go"
+cask "1password-cli"
+cask "blender"
+cask "goland"
+cask "steam"
+cask "vlc"
+EOF
+{{ end -}}
