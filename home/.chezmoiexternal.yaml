@@ -19,17 +19,3 @@
   exact: true
   refreshPeriod: "168h"
 {{- end }}
-
-{{ range list "CascadiaCode" "CascadiaCodeItalic" "CascadiaCodePL" "CascadiaCodePLItalic" }}
-"Library/Fonts/{{ . }}.ttf":
-  type: "file"
-  url: "https://github.com/microsoft/cascadia-code/releases/download/v2111.01/CascadiaCode-2111.01.zip"
-  filter:
-    command: tar
-    args:
-        - -xf
-        - "-"
-        - --strip-components=1
-        - --to-stdout
-        - ttf/{{ . }}.ttf
-{{ end }}
