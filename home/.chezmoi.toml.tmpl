@@ -1,4 +1,9 @@
 {{- $iswork := false }}
 
+{{- if eq .chezmoi.hostname "BCG81230" }}
+{{- $iswork = true }}
+{{- end }}
+
 [data]
   iswork = {{ $iswork }}
+  email = {{ promptString "email" | quote }}
