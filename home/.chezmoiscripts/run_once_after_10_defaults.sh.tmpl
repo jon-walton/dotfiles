@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -eufo pipefail
+-
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.config/iterm2/prefs"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -integer 1
