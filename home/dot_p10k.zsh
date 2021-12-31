@@ -77,6 +77,7 @@
     # haskell_stack           # haskell version from stack (https://haskellstack.org/)
     kubecontext             # current kubernetes context (https://kubernetes.io/)
     terraform               # terraform workspace (https://www.terraform.io)
+    aws_vault
     aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
     aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
     # azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
@@ -1641,6 +1642,15 @@
   # Type `p10k help segment` for documentation and a more sophisticated example.
   function prompt_example() {
     p10k segment -b 1 -f 3 -i '⭐' -t 'hello, %n'
+  }
+
+  function prompt_aws_vault() {
+    if [[ -n $AWS_VAULT ]]; then
+      p10k segment -i ☁️ -f black -b green -t $AWS_VAULT
+    fi
+  }
+  function instant_prompt_aws_vault() {
+    prompt_aws_vault
   }
 
   # User-defined prompt segments may optionally provide an instant_prompt_* function. Its job

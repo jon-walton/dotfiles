@@ -1,13 +1,13 @@
 [default]
 region=ap-southeast-1
 
-{{- if .iswork }}
+{{ if .iswork -}}
 [profile sso-common]
-sso_start_url={{ (index (lastpass "SSO Start URL") 0).note -}}
+sso_start_url={{ ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson).sso.startUrl }}
 sso_region=ap-southeast-1
 
 [profile uat]
 include_profile=sso-common
-sso_account_id={{ (index (lastpass "UAT Account ID") 0).note -}}
-sso_role_name={{ (index (lastpass "UAT SSO Role") 0).note -}}
+sso_account_id={{ ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson).uat.accountId }}
+sso_role_name={{ ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson).uat.ssoRoleName }}
 {{- end }}
