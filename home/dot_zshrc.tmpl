@@ -9,6 +9,7 @@ DISABLE_AUTO_UPDATE="true"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
+	zsh-syntax-highlighting
 	{{- if .iswork }}
 	docker
 	zsh-aws-vault
@@ -17,7 +18,22 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+#
+# Aliases
+#
 alias cm=chezmoi
+{{- if .iswork }}
+alias tf=terraform
+alias tg=terragrunt
+{{- end }}
+
+#
+# Env
+#
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
+{{- if .iswork }}
+export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
+{{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}
 {{   if stat "/opt/homebrew/bin/brew" -}}
@@ -30,32 +46,6 @@ eval "$(/usr/local/bin/brew shellenv)"
 {{ end -}}
 
 {{- if .iswork }}
-export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
-
-alias tf=terraform
-alias tg=terragrunt
-
-# prompt_aws_vault() {
-# 	AWS_VAULT_PL_CHAR="☁️ "
-# 	local vault_segment
-# 	vault_segment="`prompt_aws_vault_segment`"
-# 	[[ $vault_segment != '' ]] && prompt_segment green black "$vault_segment"
-# }
-{{- end }}
-
-# custom_prompt() {
-# 	RETVAL=$?
-# 	prompt_status
-# 	prompt_context
-# 	{{- if .iswork }}
-# 	prompt_aws_vault
-# 	{{- end }}
-# 	prompt_dir
-# 	prompt_git
-# 	prompt_end
-# }
-# 
-# PROMPT='%{%f%b%k%}$(custom_prompt) '
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
