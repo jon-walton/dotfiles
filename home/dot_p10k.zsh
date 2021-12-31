@@ -1646,7 +1646,16 @@
 
   function prompt_aws_vault() {
     if [[ -n $AWS_VAULT ]]; then
-      p10k segment -i ☁️ -f black -b green -t $AWS_VAULT
+      case $AWS_VAULT in
+        prod*)
+          local AWS_VAULT_COLOR="red"
+          ;;
+
+        *)
+          local AWS_VAULT_COLOR="green"
+          ;;
+      esac
+      p10k segment -i ☁️ -f black -b $AWS_VAULT_COLOR -t $AWS_VAULT
     fi
   }
   function instant_prompt_aws_vault() {
