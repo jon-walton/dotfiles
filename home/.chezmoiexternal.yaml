@@ -17,5 +17,6 @@
   type: "archive"
   url: "https://github.com/blimmer/zsh-aws-vault/archive/refs/heads/main.zip"
   exact: true
+  stripComponents: 1
   refreshPeriod: "168h"
 {{- end }}
