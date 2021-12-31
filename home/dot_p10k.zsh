@@ -78,8 +78,8 @@
     kubecontext             # current kubernetes context (https://kubernetes.io/)
     terraform               # terraform workspace (https://www.terraform.io)
     aws_vault
-    aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
-    aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
+    # aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+    # aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
     # azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
     # gcloud                  # google cloud cli account and project (https://cloud.google.com/)
     # google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
@@ -1655,7 +1655,7 @@
           local AWS_VAULT_COLOR="green"
           ;;
       esac
-      p10k segment -i ☁️ -f black -b $AWS_VAULT_COLOR -t $AWS_VAULT
+      p10k segment -f black -b $AWS_VAULT_COLOR -t $AWS_VAULT
     fi
   }
   function instant_prompt_aws_vault() {
