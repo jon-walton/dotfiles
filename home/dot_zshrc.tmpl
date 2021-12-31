@@ -22,6 +22,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 #
 alias cm=chezmoi
+alias gc='git fetch -p && for branch in $(git branch --list --format "%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)" | awk 'NF'); do git branch -D $branch; done'
 {{- if .iswork }}
 alias tf=terraform
 alias tg=terragrunt
