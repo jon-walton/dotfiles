@@ -44,8 +44,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 {{   else if stat "/usr/local/bin/brew" -}}
 fpath+=("$(/usr/local/bin/brew --prefix)/share/zsh/site-functions")
 eval "$(/usr/local/bin/brew shellenv)"
-{{   end -}}
-{{ end -}}
+{{   end }}
+{{ end }}
+
+PATH=$HOME/.local/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

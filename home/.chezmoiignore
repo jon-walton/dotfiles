@@ -1,2 +1,7 @@
+{{ if not .iswork }}
+.aws
+.local/bin/sg-add-ip.sh
+{{ end }}
+
 .oh-my-zsh/cache/**
 .oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc

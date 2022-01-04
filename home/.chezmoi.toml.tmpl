@@ -1,3 +1,10 @@
+encryption = "age"
+useBuiltinAge = "off"
+[age]
+  identity = "~/.ssh/id_ed25519"
+  recipient = "age19d38ctc90dewepx6yg4srdp9gapfzdvsgyqk9zazlzphuqssqgxsx37l9g"
+  symmetric = true
+
 {{- $iswork := false }}
 
 {{- if eq .chezmoi.hostname "BCG81230" }}
