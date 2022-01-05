@@ -12,13 +12,15 @@
 {{- end -}}
 
 
-{{- if $iswork }}
 encryption = "age"
 useBuiltinAge = "off"
 [age]
   identity = "~/.config/age/keys.txt"
-  recipient = "age1kule0g0lfzr9ft5h3at4jxfts8qen6lcjnyl0e7m5rv0serl55nq86muh0"
   symmetric = true
+{{- if $iswork }}
+  recipient = "age1kule0g0lfzr9ft5h3at4jxfts8qen6lcjnyl0e7m5rv0serl55nq86muh0"
+{{- else }}
+  recipient = "age1csvjdj0tc89vju75psjpwn04wchhy3xskkhfsy58rawrsx9xhypqnntfs4"
 {{- end }}
 
 [data]
