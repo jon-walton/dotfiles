@@ -1,0 +1,3 @@
+{{- if .iswork }}
+{{ (index (lastpassRaw "chezmoi age key") 0).note }}
+{{- end }}

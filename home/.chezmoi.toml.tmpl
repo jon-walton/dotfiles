@@ -1,16 +1,26 @@
-encryption = "age"
-useBuiltinAge = "off"
-[age]
-  identity = "~/.ssh/id_ed25519"
-  recipient = "age19d38ctc90dewepx6yg4srdp9gapfzdvsgyqk9zazlzphuqssqgxsx37l9g"
-  symmetric = true
-
-{{- $iswork := false }}
+{{ $iswork := false }}
 
 {{- if eq .chezmoi.hostname "BCG81230" }}
 {{- $iswork = true }}
 {{- end }}
 
+{{- $email := "" -}}
+{{- if (hasKey . "email") -}}
+  {{-   $email = .email -}}
+{{- else -}}
+  {{-   $email = promptString "email" -}}
+{{- end -}}
+
+
+{{- if $iswork }}
+encryption = "age"
+useBuiltinAge = "off"
+[age]
+  identity = "~/.config/age/keys.txt"
+  recipient = "age1kule0g0lfzr9ft5h3at4jxfts8qen6lcjnyl0e7m5rv0serl55nq86muh0"
+  symmetric = true
+{{- end }}
+
 [data]
   iswork = {{ $iswork }}
-  email = {{ promptString "email" | quote }}
+  email = {{ $email | quote }}
