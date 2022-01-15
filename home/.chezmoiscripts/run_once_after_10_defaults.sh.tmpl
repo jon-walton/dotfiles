@@ -2,7 +2,13 @@
 
 set -eufo pipefail
 
+defaults write com.apple.dock "show-recents" -integer 0
+
 defaults write com.apple.Finder AppleShowAllFiles true
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+defaults write com.apple.finder ShowPathbar -bool true
+
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.config/iterm2/prefs"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -integer 1
