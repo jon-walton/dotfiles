@@ -2,12 +2,16 @@
 region=ap-southeast-1
 
 {{ if .iswork -}}
+{{ $awsConfig := ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson) }}
 [profile sso-common]
-sso_start_url={{ ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson).sso.startUrl }}
+sso_start_url={{ $awsConfig.sso.startUrl }}
 sso_region=ap-southeast-1
 
-[profile uat]
+{{ range $name, $profile := $awsConfig.profiles }}
+[profile {{ $name }}]
 include_profile=sso-common
-sso_account_id={{ ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson).uat.accountId }}
-sso_role_name={{ ((index ((index (lastpass "AWS Profiles") 0).note) "") | fromJson).uat.ssoRoleName }}
+sso_account_id={{ $profile.accountId }}
+sso_role_name={{ $profile.ssoRoleName }}
+{{ end }}
+
 {{- end }}
