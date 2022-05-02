@@ -28,6 +28,8 @@ alias gc='git fetch -p && for branch in $(git branch --list --format "%(if:equal
 {{- if .iswork }}
 alias tf=terraform
 alias tg=terragrunt
+alias k=kubectl
+alias hf=helmfile
 {{- end }}
 
 #
@@ -48,7 +50,7 @@ eval "$(/usr/local/bin/brew shellenv)"
 {{   end }}
 {{ end }}
 
-PATH=$HOME/.local/bin:$PATH
+PATH=$HOME/.local/bin:${HOME}/.krew/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
