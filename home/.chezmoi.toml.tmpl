@@ -1,8 +1,9 @@
-{{ $iswork := false }}
-
-{{- if eq .chezmoi.hostname "BCG81230" }}
-{{- $iswork = true }}
-{{- end }}
+{{- $iswork := false -}}
+{{- if (hasKey . "iswork") -}}
+  {{- $iswork = .iswork -}}
+{{- else -}}
+  {{ $iswork := promptBool "is work?" }}
+{{- end -}}
 
 {{- $email := "" -}}
 {{- if (hasKey . "email") -}}
@@ -13,7 +14,7 @@
 
 
 encryption = "age"
-useBuiltinAge = "off"
+useBuiltinAge = "on"
 [age]
   identity = "~/.config/age/keys.txt"
   symmetric = true
