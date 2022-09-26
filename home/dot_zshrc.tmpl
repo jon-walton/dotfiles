@@ -12,10 +12,7 @@ plugins=(
 	direnv
 	fast-syntax-highlighting
 	ssh-agent
-	{{- if .iswork }}
 	docker
-	zsh-aws-vault
-	{{- end }}
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -25,20 +22,15 @@ source $ZSH/oh-my-zsh.sh
 #
 alias cm=chezmoi
 alias gc='git fetch -p && for branch in $(git branch --list --format "%(if:equals=[gone])%(upstream:track)%(then)%(refname:short)%(end)" | awk 'NF'); do git branch -D $branch; done'
-{{- if .iswork }}
 alias tf=terraform
-alias tg=terragrunt
 alias k=kubectl
 alias hf=helmfile
-{{- end }}
 
 #
 # Env
 #
 export HOMEBREW_CASK_OPTS="--appdir=~/Applications"
-{{- if .iswork }}
 export TF_PLUGIN_CACHE_DIR="$HOME/.terraform.d/plugin-cache"
-{{- end }}
 
 {{ if eq .chezmoi.os "darwin" -}}
 {{   if stat "/opt/homebrew/bin/brew" -}}

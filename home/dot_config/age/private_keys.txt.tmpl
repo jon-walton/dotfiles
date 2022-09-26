@@ -1,5 +1,5 @@
 {{- if .iswork }}
-{{ (index (lastpassRaw "chezmoi age key") 0).note }}
+
 {{- else -}}
 {{ (onepassword "j6rwhucbqrcyfnvfn5q3gknjpq" "mska5f2bf6qr76dychgfhir6gq").details.notesPlain }}
 {{- end }}
